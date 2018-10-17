@@ -1,7 +1,7 @@
 #include<stdio.h>
 int main()
 {
-	void inv(int *x,int n); //声明
+	void inv(int x[],int n); //声明
 
 	int i,a[10]={3,7,9,10,0,6,7,5,4,2};
 
@@ -20,7 +20,8 @@ int main()
   return 0;
 }
 
-void inv(int *x,int n)
+
+void inv(int x[],int n)
 {
 	int temp,i,j,m;
 	m=(n-1)/2;
@@ -33,3 +34,23 @@ void inv(int *x,int n)
 	}
 
 }
+
+//************修改函数 注意for循环的变化******************
+void inv(int *x,int n)
+{
+	int *p,temp,*i,*j,m;
+	m=(n-1)/2;
+	i=x;     //i指向首元素地址
+	j=x+n-1; //j指向末尾元素地址
+	p=x+m;   //p指向中间 
+	for(;i<=p;i++,j--)//指针变量移动
+	{
+		temp=*i;  //指针变量所指向的元素互换
+		*i=*j;
+		*j=temp;
+	}
+	return;
+}
+
+
+

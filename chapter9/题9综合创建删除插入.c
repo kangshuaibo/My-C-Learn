@@ -24,7 +24,7 @@ int main()
 	head=creat();
 	print(head);
 
-	printf("input delete number");
+	printf("input delete number:");
 	scanf("%ld",&del_num);
 	head=del(head,del_num);
 	print(head);
@@ -43,7 +43,7 @@ struct student *creat()
    struct student *head;
 
    p1=p2=(struct student *)malloc(LEN);//开辟一个 输入数据
-   printf("%ld%f",p1->num,p1->score );
+   scanf("%ld%f",&p1->num,&p1->score );
    head=NULL;
    n=0;
    while(p1->num!=0)
@@ -64,12 +64,14 @@ struct student *creat()
 	
 }
 
-struct student*del(struct student *head,long num)
+struct student *del(struct student *head,long num)
 {
 	struct student *p1,*p2;
 	if(head==NULL)
+	{
 		printf("\nlist is null");
-	return head;
+	    return head;
+	}
 
 	p1=head;
 	while(num!=p1->num && p1->next!=NULL)//没找到 往下跑
@@ -84,7 +86,7 @@ struct student*del(struct student *head,long num)
  			head=p1->next;
  		else
  			p2->next=p1->next;  //p2操作与head等价 只不过head 为赋值
- 		printf("delete:%ld\n",num);
+ 		printf("%ld has been delete\n",num);
  		n=n-1;
 	}
 	else//不存在
